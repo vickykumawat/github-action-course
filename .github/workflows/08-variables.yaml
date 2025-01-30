@@ -1,6 +1,6 @@
 name : 08-variables.yaml
 on:
- push:
+ #push:
  workflow_dispatch:
 
 env:
