@@ -1,0 +1,39 @@
+name: 13-using caching
+
+on: 
+  workflow_dispatch
+      inputs:
+        use-cache:
+            description: Wheather to execute cache step
+            type: boolean
+            default: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+        run:
+            working_directory: 13-caching/reat-app
+    steps:
+        - name: Checkout the code
+          uses: actions/checkout@v4
+        - name: Setup the node
+          uses: action/setup-node#v3
+          with:
+            node-version: '20.x'
+        - name: Install the dependency
+          run: npm ci
+        - name: Testing
+          run: npm run test
+        - name: Building
+          run: npm run build
+        - name: Deplying to non prod
+          run: echo "Deploying to non prod"
+        
+
+
+    # 1. checkout the code
+    # 2. install the depecdecnry
+    # 3.  unit testing, building
+    # 4. Deply to non prod environment
+
