@@ -1,7 +1,7 @@
 name: 13-using caching
 
 on: 
-  workflow_dispatch
+  workflow_dispatch:
       inputs:
         use-cache:
             description: Wheather to execute cache step
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
         run:
-            working_directory: 13-caching/reat-app
+          working-directory: 13-caching/react-app
     steps:
         - name: Checkout the code
           uses: actions/checkout@v4
