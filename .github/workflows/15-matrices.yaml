@@ -40,7 +40,8 @@ jobs:
             shape: triagle
             opacity: 50
         exclude:
-          - opacity: 75
+          - color: green
+            shape: circle
 
     steps:
       - name: Dummy step
