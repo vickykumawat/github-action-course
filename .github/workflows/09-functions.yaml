@@ -1,7 +1,7 @@
 name: 09-functions
 on:
- push:
- pull_request:
+ #push:
+ #pull_request:
  workflow_dispatch:
 jobs:
   echo1:
@@ -18,10 +18,10 @@ jobs:
         if: ${{ !cancelled()  &&  contains(github.event.pull_request.title,'fix') }}
         run: echo "I am a bug fix"
 
-      - name: sleep for 20 sec
-        run: sleep 5s
-      - name: Failing-step
-        run: exit 1
+    #   - name: sleep for 20 sec
+    #     run: sleep 5s
+    #   - name: Failing-step
+    #     run: exit 1
       - name: I will be skipped
         if: ${{ success() }}
         run: |
