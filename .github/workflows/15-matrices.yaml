@@ -2,7 +2,7 @@ name: 15 - Working with Matrices
 on:
   workflow_dispatch:
 jobs:
-   backwards-compatibility:
+  backwards-compatibility:
     name: ${{matrix.os}}-${{matrix.node-version}}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -11,6 +11,9 @@ jobs:
             os:
               - ubuntu-latest
               - window-latest
+            include:
+              - os: ubuntu-latest
+                node-version: 15.x
     steps:
        - name: setup-node
          uses: actions/setup-node@v3
@@ -19,6 +22,22 @@ jobs:
 
        - name: Perform some test
          run: echo "Running tests on os ${{matrix.os }} and node js ${{matrix.node-version}}"
+
+  inlcude-example:
+    runs-on: ubuntu-latest
+    name: ${{ matrix.color}}-${{matrix.shape}}-${{matrix.size}}
+    strategy:
+      matrix:
+        color: [red, green]
+        shape: [circle, square]
+        size: [small, large]
+        include: 
+          - color: red
+            shape: triagle
+    steps:
+      - name: Dummy step
+        run: echo "${{ matrix.color}}-${{matrix.shape}}-${{matrix.size}}"
+        
 
      
      
